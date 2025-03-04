@@ -24,6 +24,13 @@ export const createEmployees=  async (req, res) => {
     })
 }
 
+export const deleteEmployees = async (req, res) => {
+    const {id} = req.params;
+    const result = await pool.query("DELETE FROM employee WHERE id = ?", [id])
+
+    console.log(result);
+    res.send("Employee deleted")
+}
+
 export const updateEmployees = (req, res) => res.send("updating employees")
 
-export const deleteEmployees = (req, res) => res.send("deleting employees")
